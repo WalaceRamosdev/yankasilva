@@ -15,13 +15,9 @@ const Header = () => {
     // Prevent scrolling when menu is open
     useEffect(() => {
         if (isMenuOpen) {
-            document.body.style.overflow = "hidden";
-            document.body.style.position = "fixed";
-            document.body.style.width = "100%";
+            document.documentElement.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = "unset";
-            document.body.style.position = "static";
-            document.body.style.width = "auto";
+            document.documentElement.style.overflow = "unset";
         }
     }, [isMenuOpen]);
 
@@ -34,43 +30,44 @@ const Header = () => {
     ];
 
     const socialLinks = [
-        { icon: <Instagram className="w-5 h-5" />, href: "#" },
-        { icon: <Linkedin className="w-5 h-5" />, href: "#" },
-        { icon: <Send className="w-5 h-5" />, href: "#" },
+        { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com" },
+        { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com" },
+        { icon: <Send className="w-5 h-5" />, href: "https://wa.me/5500000000000" },
     ];
 
     return (
-        <header className={`fixed top-0 w-full z-[999] transition-all duration-300 ${isScrolled || isMenuOpen ? "bg-[#020617] py-3 shadow-lg" : "bg-transparent py-5"}`}>
-            <div className="container mx-auto px-6 flex justify-between items-center relative z-[1000]">
-                <div className="flex items-center gap-2">
-                    <img src="/logo.jpeg" alt="Yanka Silva" className="h-10 md:h-12 w-auto object-contain mix-blend-screen" />
+        <>
+            <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${isScrolled || isMenuOpen ? "bg-[#020617] py-3 shadow-lg border-b border-white/5" : "bg-transparent py-5"}`}>
+                <div className="container mx-auto px-6 flex justify-between items-center relative z-[1001]">
+                    <div className="flex items-center gap-2">
+                        <img src="/logo.jpeg" alt="Yanka Silva" className="h-10 md:h-12 w-auto object-contain mix-blend-screen" />
+                    </div>
+
+                    <nav className="hidden md:flex items-center gap-8 text-white font-sans">
+                        {navLinks.map((link) => (
+                            <a key={link.name} href={link.href} className="font-medium text-white/70 hover:text-white transition-colors relative group">
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2563EB] transition-all group-hover:w-full"></span>
+                            </a>
+                        ))}
+                    </nav>
+
+                    <div className="flex items-center gap-4">
+                        <button className="bg-[#7C3AED] text-white px-6 py-2.5 rounded-full font-bold transition-all hover:scale-105 active:scale-95 hidden sm:block">
+                            Fale com Yanka
+                        </button>
+                        <button
+                            className="md:hidden p-3 rounded-xl transition-all relative z-[1100] bg-white/10 hover:bg-white/20"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label={isMenuOpen ? "Fechar Menu" : "Abrir Menu"}
+                        >
+                            {isMenuOpen ? <X className="w-7 h-7 text-white" /> : <Menu className="w-7 h-7 text-white" />}
+                        </button>
+                    </div>
                 </div>
+            </header>
 
-                <nav className="hidden md:flex items-center gap-8 text-white font-sans">
-                    {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="font-medium text-white/70 hover:text-white transition-colors relative group">
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2563EB] transition-all group-hover:w-full"></span>
-                        </a>
-                    ))}
-                </nav>
-
-                <div className="flex items-center gap-4">
-                    <button className="bg-[#7C3AED] text-white px-6 py-2.5 rounded-full font-bold transition-all hover:scale-105 active:scale-95 hidden sm:block">
-                        Fale com Yanka
-                    </button>
-                    <button
-                        className="md:hidden p-3 rounded-xl transition-all relative z-[1100] bg-white/10"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label={isMenuOpen ? "Fechar Menu" : "Abrir Menu"}
-                    >
-                        {/* Always use the current state to reflect the icon */}
-                        {isMenuOpen ? <X className="w-7 h-7 text-white" /> : <Menu className="w-7 h-7 text-white" />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - Moved OUTSIDE the header for cleaner stacking */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
@@ -79,28 +76,18 @@ const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 bg-[#020617] z-[1050] md:hidden flex flex-col"
+                        className="fixed inset-0 bg-[#020617] z-[999] md:hidden flex flex-col pt-24"
                     >
+                        {/* Static opaque background to prevent transparency issues */}
                         <div className="absolute inset-0 bg-[#020617] -z-20"></div>
 
-                        {/* Explicit Close Button inside the menu */}
-                        <div className="absolute top-4 right-6 pt-1">
-                            {/* This button is specifically to close the menu if the header one fails for some reason or is obscured */}
-                            <button
-                                onClick={() => setIsMenuOpen(false)}
-                                className="p-3 bg-white/10 rounded-xl"
-                            >
-                                <X className="w-7 h-7 text-white" />
-                            </button>
-                        </div>
-
                         {/* Decorative background element */}
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 pointer-events-none">
+                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-40 pointer-events-none">
                             <div className="absolute top-[-5%] right-[-5%] w-[70%] h-[70%] bg-[#2563EB]/40 blur-[100px] rounded-full"></div>
                             <div className="absolute bottom-[-5%] left-[-5%] w-[70%] h-[70%] bg-[#7C3AED]/40 blur-[100px] rounded-full"></div>
                         </div>
 
-                        <nav className="relative z-10 flex-1 flex flex-col items-center justify-center gap-8 px-6 pt-12">
+                        <nav className="relative z-10 flex-1 flex flex-col items-center justify-center gap-8 px-6 pb-8">
                             {navLinks.map((link, i) => (
                                 <motion.a
                                     key={link.name}
@@ -121,7 +108,10 @@ const Header = () => {
                                 transition={{ delay: 0.4 }}
                                 className="mt-8 w-full max-w-[280px]"
                             >
-                                <button className="w-full bg-[#2563EB] text-white py-4 rounded-full font-bold text-lg shadow-xl active:scale-95 transition-transform">
+                                <button
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-full bg-[#2563EB] text-white py-4 rounded-full font-bold text-lg shadow-2xl active:scale-95 transition-transform"
+                                >
                                     Fale com Yanka
                                 </button>
                             </motion.div>
@@ -147,7 +137,7 @@ const Header = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </>
     );
 };
 
