@@ -16,8 +16,12 @@ const Header = () => {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
+            document.body.style.width = "100%";
         } else {
             document.body.style.overflow = "unset";
+            document.body.style.position = "static";
+            document.body.style.width = "auto";
         }
     }, [isMenuOpen]);
 
@@ -56,10 +60,11 @@ const Header = () => {
                         Fale com Yanka
                     </button>
                     <button
-                        className={`md:hidden p-3 rounded-xl transition-all relative z-[1100] ${isMenuOpen ? "bg-white/20" : "bg-white/10"}`}
+                        className="md:hidden p-3 rounded-xl transition-all relative z-[1100] bg-white/10"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label={isMenuOpen ? "Fechar Menu" : "Abrir Menu"}
                     >
+                        {/* Always use the current state to reflect the icon */}
                         {isMenuOpen ? <X className="w-7 h-7 text-white" /> : <Menu className="w-7 h-7 text-white" />}
                     </button>
                 </div>
@@ -70,28 +75,38 @@ const Header = () => {
                 {isMenuOpen && (
                     <motion.div
                         key="mobile-menu-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.15 }}
+                        initial={{ opacity: 0, x: "100%" }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: "100%" }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="fixed inset-0 bg-[#020617] z-[1050] md:hidden flex flex-col"
                     >
-                        {/* Static opaque background div */}
                         <div className="absolute inset-0 bg-[#020617] -z-20"></div>
 
+                        {/* Explicit Close Button inside the menu */}
+                        <div className="absolute top-4 right-6 pt-1">
+                            {/* This button is specifically to close the menu if the header one fails for some reason or is obscured */}
+                            <button
+                                onClick={() => setIsMenuOpen(false)}
+                                className="p-3 bg-white/10 rounded-xl"
+                            >
+                                <X className="w-7 h-7 text-white" />
+                            </button>
+                        </div>
+
                         {/* Decorative background element */}
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-40">
+                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 pointer-events-none">
                             <div className="absolute top-[-5%] right-[-5%] w-[70%] h-[70%] bg-[#2563EB]/40 blur-[100px] rounded-full"></div>
                             <div className="absolute bottom-[-5%] left-[-5%] w-[70%] h-[70%] bg-[#7C3AED]/40 blur-[100px] rounded-full"></div>
                         </div>
 
-                        <nav className="relative z-10 flex-1 flex flex-col items-center justify-center gap-6 px-6 pt-24 pb-8">
+                        <nav className="relative z-10 flex-1 flex flex-col items-center justify-center gap-8 px-6 pt-12">
                             {navLinks.map((link, i) => (
                                 <motion.a
                                     key={link.name}
                                     href={link.href}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.05 + 0.1 }}
                                     onClick={() => setIsMenuOpen(false)}
                                     className="text-4xl font-bold text-white hover:text-[#2563EB] transition-colors py-2 tracking-tight font-display"
@@ -112,9 +127,9 @@ const Header = () => {
                             </motion.div>
                         </nav>
 
-                        <div className="relative z-10 p-8 pb-12 flex flex-col items-center gap-6 border-t border-white/10 bg-white/10">
+                        <div className="relative z-10 p-10 pb-16 flex flex-col items-center gap-6 border-t border-white/10 bg-white/5">
                             <p className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">Siga meu trabalho</p>
-                            <div className="flex gap-6">
+                            <div className="flex gap-8">
                                 {socialLinks.map((social, i) => (
                                     <motion.a
                                         key={i}
