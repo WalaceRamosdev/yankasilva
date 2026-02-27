@@ -8,12 +8,12 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="py-20 bg-white/5 border-y border-white/5">
+        <section className="py-16 md:py-24 bg-white/5 border-y border-white/5">
             <div className="container mx-auto px-6">
-                <h2 className="section-title text-white">O que dizem os clientes</h2>
-                <div className="grid md:grid-cols-3 gap-8">
+                <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white">O que dizem os clientes</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {reviews.map((review, i) => (
-                        <div key={i} className="bg-neutral-dark p-8 rounded-3xl shadow-sm border border-white/10 hover:border-primary/30 transition-colors">
+                        <div key={i} className="bg-neutral-dark p-6 md:p-8 rounded-3xl shadow-sm border border-white/10 hover:border-primary/30 transition-colors">
                             <div className="flex gap-1 mb-4">
                                 {[...Array(review.stars)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-300 text-amber-300" />)}
                             </div>

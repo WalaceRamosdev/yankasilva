@@ -13,16 +13,16 @@ const Portfolio = () => {
     const filtered = filter === "todos" ? projects : projects.filter(p => p.category === filter);
 
     return (
-        <section id="portfolio" className="py-20">
+        <section id="portfolio" className="py-16 md:py-24">
             <div className="container mx-auto px-6">
-                <h2 className="section-title">Portfólio & Resultados</h2>
+                <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Portfólio & Resultados</h2>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {["todos", "feed", "stories", "resultados"].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f)}
-                            className={`px-6 py-2 rounded-full font-medium transition-all ${filter === f ? "bg-primary text-white" : "bg-white/5 text-white/60 hover:bg-white/10"}`}
+                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${filter === f ? "bg-primary text-white shadow-lg" : "bg-white/5 text-white/60 hover:bg-white/10"}`}
                         >
                             {f.charAt(0).toUpperCase() + f.slice(1)}
                         </button>
@@ -31,7 +31,7 @@ const Portfolio = () => {
 
                 <motion.div
                     layout
-                    className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
                 >
                     {filtered.map((project) => (
                         <motion.div
