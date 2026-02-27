@@ -1,0 +1,42 @@
+---
+import "../index.css";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Yanka Silva - Social Media Specialist. Transforme suas redes sociais em uma máquina de vendas."
+		/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		{/* SEO Meta Tags */}
+		<meta
+			name="keywords"
+			content="social media, gestão de redes sociais, marketing digital, Yanka Silva"
+		/>
+		<meta property="og:title" content={title} />
+		<meta
+			property="og:description"
+			content="Transforme suas redes sociais com estratégias personalizadas de Yanka Silva."
+		/>
+		<meta property="og:type" content="website" />
+
+		<title>{title}</title>
+	</head>
+	<body
+		class="bg-neutral-dark text-neutral-light font-sans selection:bg-primary selection:text-white"
+	>
+		<slot />
+	</body>
+</html>
