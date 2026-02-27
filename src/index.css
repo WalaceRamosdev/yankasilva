@@ -64,11 +64,19 @@
 }
 
 .btn-primary {
-  @apply bg-primary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(37, 99, 235, 0.4)] active:scale-95 text-center;
+  @apply bg-primary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 active:scale-95 text-center;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(124, 58, 237, 0.4)] active:scale-95 text-center;
+  @apply bg-secondary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 active:scale-95 text-center;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
 .section-title {
