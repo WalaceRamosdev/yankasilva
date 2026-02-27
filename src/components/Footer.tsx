@@ -4,15 +4,15 @@ const Footer = () => {
     return (
         <footer className="bg-neutral-dark/50 border-t border-white/5 pt-20 pb-10">
             <div className="container mx-auto px-6">
-                <div className="grid md:grid-cols-4 gap-12 mb-16">
-                    <div className="col-span-2">
-                        <div className="flex items-center gap-2 mb-6">
-                            <img src="/logo.jpeg" alt="Yanka Silva" className="h-12 w-auto object-contain" />
+                <div className="grid md:grid-cols-4 gap-12 mb-16 text-center md:text-left">
+                    <div className="md:col-span-2">
+                        <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                            <img src="/logo.jpeg" alt="Yanka Silva" className="h-10 md:h-12 w-auto object-contain mix-blend-screen" />
                         </div>
-                        <p className="text-white/60 max-w-sm mb-6">
+                        <p className="text-white/60 max-w-sm mb-6 mx-auto md:mx-0">
                             Transformando marcas através de estratégias digitais autênticas e focadas em resultados reais.
                         </p>
-                        <div className="flex gap-4">
+                        <div className="flex justify-center md:justify-start gap-4">
                             {[
                                 { icon: <Instagram className="w-5 h-5" />, link: "#", label: "Instagram" },
                                 { icon: <Linkedin className="w-5 h-5" />, link: "#", label: "Linkedin" },
@@ -36,7 +36,7 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-lg mb-6 text-white">Contato</h4>
+                        <h4 className="font-bold text-lg mb-6 text-white text-center md:text-left">Contato</h4>
                         <ul className="space-y-3 text-white/60">
                             <li>contato@yankasilva.com</li>
                             <li>+55 (11) 99999-9999</li>
@@ -45,11 +45,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-neutral-dark/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-dark/40">
+                <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
                     <p>© 2026 Yanka Silva. Todos os direitos reservados.</p>
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-primary">Privacidade</a>
-                        <a href="#" className="hover:text-primary">Termos</a>
+                        <a href="#" className="hover:text-primary transition-colors">Privacidade</a>
+                        <a href="#" className="hover:text-primary transition-colors">Termos</a>
                     </div>
                 </div>
             </div>
@@ -59,9 +59,9 @@ const Footer = () => {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50"
+                className="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-14 h-14 md:w-16 md:h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 animate-bounce"
             >
-                <MessageSquare className="w-8 h-8" />
+                <MessageSquare className="w-7 h-7 md:w-8 md:h-8" />
             </a>
         </footer>
     );

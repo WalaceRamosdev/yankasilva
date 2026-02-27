@@ -9,24 +9,24 @@ const About = () => {
     ];
 
     return (
-        <section id="sobre" className="py-20 overflow-hidden">
-            <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <section id="sobre" className="py-16 md:py-24 overflow-hidden">
+            <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="relative"
+                    className="relative px-4"
                 >
-                    <div className="rounded-[3rem] overflow-hidden shadow-2xl rotate-3">
+                    <div className="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl md:rotate-3">
                         <img
                             src="https://picsum.photos/seed/lifestyle/800/800"
                             alt="Yanka Lifestyle"
-                            className="w-full h-auto"
+                            className="w-full h-auto object-cover max-h-[400px] md:max-h-none"
                             referrerPolicy="no-referrer"
                         />
                     </div>
-                    <div className="absolute -bottom-8 -right-8 bg-accent p-8 rounded-3xl shadow-xl -rotate-6 hidden sm:block">
-                        <p className="font-display font-bold text-2xl">Especialista em <br />Conexões Reais</p>
+                    <div className="absolute -bottom-8 -right-4 bg-accent p-6 md:p-8 rounded-3xl shadow-xl -rotate-6 hidden md:block">
+                        <p className="font-display font-bold text-xl md:text-2xl text-white">Especialista em <br />Conexões Reais</p>
                     </div>
                 </motion.div>
 
@@ -34,9 +34,10 @@ const About = () => {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    className="text-center lg:text-left"
                 >
-                    <h2 className="text-4xl font-bold mb-6">Quem vai cuidar da sua marca</h2>
-                    <div className="space-y-4 text-lg text-white/70 mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Quem vai cuidar da sua marca</h2>
+                    <div className="space-y-4 text-base md:text-lg text-white/70 mb-8">
                         <p>
                             Olá! Sou a <strong className="text-white">Yanka Silva</strong>, apaixonada por transformar perfis comuns em comunidades vibrantes e lucrativas.
                         </p>
@@ -48,7 +49,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    <div className="grid gap-4">
+                    <div className="grid gap-3 sm:gap-4 max-w-md mx-auto lg:mx-0">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
@@ -58,10 +59,10 @@ const About = () => {
                                 viewport={{ once: true }}
                                 className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl"
                             >
-                                <div className="bg-white p-2 rounded-xl shadow-sm text-primary">
+                                <div className="bg-white/10 p-2 rounded-xl text-white">
                                     {stat.icon}
                                 </div>
-                                <span className="font-bold">{stat.label}</span>
+                                <span className="font-bold text-sm md:text-base">{stat.label}</span>
                             </motion.div>
                         ))}
                     </div>

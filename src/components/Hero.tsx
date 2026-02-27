@@ -40,22 +40,22 @@ const Hero = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                        Transforme suas redes sociais em uma máquina de <br />
-                        <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block min-w-[200px]">{text}</span>
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 mt-10 md:mt-0">
+                        Transforme suas redes sociais em uma máquina de{" "}
+                        <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block min-w-[140px] md:min-w-[200px]">{text}</span>
                         <span className="animate-pulse text-white">|</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-white/70 mb-8 max-w-lg">
+                    <p className="text-base md:text-xl text-white/70 mb-8 max-w-lg">
                         Estratégias personalizadas que conectam sua marca ao público certo e geram resultados reais.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                        <button className="btn-primary flex items-center gap-2 group">
+                    <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start w-full sm:w-auto">
+                        <button className="btn-primary flex items-center justify-center gap-2 group w-full sm:w-auto">
                             Quero crescer nas redes
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
-                        <a href="#portfolio" className="px-6 py-2 rounded-full font-medium transition-all bg-white/5 text-white/60 hover:bg-white/10 flex items-center gap-2">
+                        <a href="#portfolio" className="px-6 py-3 rounded-full font-medium transition-all bg-white/5 text-white/60 hover:bg-white/10 flex items-center justify-center gap-2 w-full sm:w-auto">
                             Veja cases de sucesso
-                            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            <ChevronRight className="w-4 h-4" />
                         </a>
                     </div>
                 </motion.div>

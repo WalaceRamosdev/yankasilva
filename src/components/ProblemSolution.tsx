@@ -24,24 +24,24 @@ const ProblemSolution = () => {
     ];
 
     return (
-        <section className="py-20 bg-neutral-dark">
+        <section className="py-16 md:py-24 bg-neutral-dark">
             <div className="container mx-auto px-6">
-                <h2 className="section-title text-white">Cansada de postar e não ver resultados?</h2>
+                <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white">Cansada de postar e não ver resultados?</h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     {items.map((item, index) => (
                         <motion.div
                             key={index}
                             whileHover={{ y: -10 }}
-                            className="bg-white/5 border border-white/10 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all group"
+                            className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all group"
                         >
-                            <div className={`${item.color} w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-6 transition-transform`}>
+                            <div className={`${item.color} w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-6 transition-transform`}>
                                 {item.icon}
                             </div>
-                            <p className="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">O Problema</p>
-                            <h3 className="text-xl font-bold mb-4 line-through text-white/40">{item.problem}</h3>
+                            <p className="text-xs md:text-sm font-bold text-red-300 uppercase tracking-wider mb-2">O Problema</p>
+                            <h3 className="text-lg md:text-xl font-bold mb-4 line-through text-white/40">{item.problem}</h3>
                             <div className="h-px w-full bg-white/10 my-4" />
-                            <p className="text-sm font-bold text-green-300 uppercase tracking-wider mb-2">A Solução</p>
-                            <h3 className="text-2xl font-bold text-sky-400">{item.solution}</h3>
+                            <p className="text-xs md:text-sm font-bold text-green-300 uppercase tracking-wider mb-2">A Solução</p>
+                            <h3 className="text-xl md:text-2xl font-bold text-sky-400">{item.solution}</h3>
                         </motion.div>
                     ))}
                 </div>

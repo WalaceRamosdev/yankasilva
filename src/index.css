@@ -16,15 +16,25 @@
   .logo-gradient {
     @apply bg-gradient-to-br from-[#2563EB] to-[#7C3AED];
   }
+
+  .mobile-text-center {
+    @apply text-center md:text-left;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
-    @apply bg-neutral-dark text-white/90 font-sans;
+    @apply bg-neutral-dark text-white/90 font-sans antialiased;
+    overflow-x: hidden;
   }
 
   h1,
@@ -33,25 +43,46 @@
   h4,
   h5,
   h6 {
-    @apply font-display;
+    @apply font-display tracking-tight text-white;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
 .glass {
-  background-color: rgba(2, 6, 23, 0.7);
-  backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-full font-display font-medium transition-all hover:scale-105 hover:shadow-lg active:scale-95;
+  @apply bg-primary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(37, 99, 235, 0.4)] active:scale-95 text-center;
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white px-6 py-3 rounded-full font-display font-medium transition-all hover:scale-105 hover:shadow-lg active:scale-95;
+  @apply bg-secondary text-white px-8 py-3.5 rounded-full font-display font-semibold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(124, 58, 237, 0.4)] active:scale-95 text-center;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold text-center mb-12;
+  @apply text-3xl md:text-5xl font-bold text-center mb-16 text-white;
+}
+
+/* Mobile Fixes */
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(8px) saturate(150%);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    @apply px-6 py-3 text-sm;
+  }
 }
