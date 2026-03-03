@@ -68,10 +68,9 @@ const Hero = () => {
                 >
                     <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-white/5">
                         <img
-                            src="https://picsum.photos/seed/yanka/800/1000"
-                            alt="Yanka Silva"
-                            className="w-full h-auto opacity-90"
-                            referrerPolicy="no-referrer"
+                            src="/yankasilva-hero.png"
+                            alt="Yanka Silva - Social Media Specialist"
+                            className="w-full h-auto opacity-100 object-cover"
                         />
                     </div>
                     {/* Decorative elements */}

@@ -19,10 +19,9 @@ const About = () => {
                 >
                     <div className="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl md:rotate-3">
                         <img
-                            src="https://picsum.photos/seed/lifestyle/800/800"
-                            alt="Yanka Lifestyle"
-                            className="w-full h-auto object-cover max-h-[400px] md:max-h-none"
-                            referrerPolicy="no-referrer"
+                            src="/yankasilva-sobre.png"
+                            alt="Yanka Silva - Sobre"
+                            className="w-full h-auto object-cover max-h-[500px] md:max-h-none"
                         />
                     </div>
                     <div className="absolute -bottom-8 -right-4 bg-accent p-6 md:p-8 rounded-3xl shadow-xl -rotate-6 hidden md:block">

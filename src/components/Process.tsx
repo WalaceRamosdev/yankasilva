@@ -13,25 +13,46 @@ const Process = () => {
         <section className="py-20 overflow-hidden">
             <div className="container mx-auto px-6">
                 <h2 className="section-title">Como trabalhamos</h2>
-                <div className="relative">
-                    {/* Line */}
-                    <div className="absolute top-1/2 left-0 w-full h-1 bg-white/10 -translate-y-1/2 hidden lg:block" />
+                <div className="grid lg:grid-cols-12 gap-12 items-center">
+                    {/* Imagem em Ação */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="lg:col-span-5 relative"
+                    >
+                        <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-3xl bg-white/5">
+                            <img
+                                src="/yankasilva-acao.png"
+                                alt="Yanka Silva em ação"
+                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            />
+                        </div>
+                        {/* Overlay decorativo */}
+                        <div className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-2xl" />
+                    </motion.div>
 
-                    <div className="grid lg:grid-cols-5 gap-8 relative z-10">
+                    {/* Passos do Processo */}
+                    <div className="lg:col-span-7 space-y-8 relative">
+                        {/* Linha vertical decorativa lateral */}
+                        <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-gradient-to-b from-primary via-secondary to-transparent hidden sm:block" />
+
                         {steps.map((step, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.1 }}
                                 viewport={{ once: true }}
-                                className="text-center group"
+                                className="flex items-start gap-6 group relative pl-4 sm:pl-12"
                             >
-                                <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl shadow-lg ring-8 ring-white/5 group-hover:scale-110 transition-transform">
+                                <div className="flex-shrink-0 w-12 h-12 bg-neutral-dark border border-white/10 text-white rounded-2xl flex items-center justify-center font-bold text-xl shadow-lg group-hover:bg-primary group-hover:border-primary transition-all duration-500 z-10">
                                     {i + 1}
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-white">{step.title}</h3>
-                                <p className="text-white/60 text-sm">{step.desc}</p>
+                                <div className="pt-1">
+                                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">{step.title}</h3>
+                                    <p className="text-white/50 text-base leading-relaxed max-w-md">{step.desc}</p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
