@@ -1,47 +1,65 @@
 import { motion } from "motion/react";
-import { Users, MessageSquare, Target } from "lucide-react";
+import { TrendingUp, ShieldCheck, Zap } from "lucide-react";
 
 const ProblemSolution = () => {
-    const items = [
+    const pillars = [
         {
-            problem: "Baixo engajamento",
-            solution: "Conteúdo que viraliza",
-            icon: <Users className="w-8 h-8" />,
-            color: "bg-primary"
+            title: "Posicionamento Frágil",
+            elevation: "Autoridade Inquestionável",
+            desc: "Deixe de ser 'apenas mais uma' para se tornar a escolha óbvia do seu mercado.",
+            icon: <ShieldCheck className="w-8 h-8" />
         },
         {
-            problem: "Sem tempo para criar",
-            solution: "Gestão completa",
-            icon: <MessageSquare className="w-8 h-8" />,
-            color: "bg-secondary"
+            title: "Design sem Intenção",
+            elevation: "Estética Estratégica",
+            desc: "Beleza que vende. Cada elemento visual é projetado para converter e conectar.",
+            icon: <Zap className="w-8 h-8" />
         },
         {
-            problem: "Não converte",
-            solution: "Estratégias de vendas",
-            icon: <Target className="w-8 h-8" />,
-            color: "bg-accent"
+            title: "Comunicação Genérica",
+            elevation: "Identidade de Poder",
+            desc: "Uma marca que fala sozinha. Diferenciação real que atrai os clientes certos.",
+            icon: <TrendingUp className="w-8 h-8" />
         }
     ];
 
     return (
-        <section className="py-16 md:py-24 bg-neutral-dark">
-            <div className="container mx-auto px-6">
-                <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white">Cansada de postar e não ver resultados?</h2>
-                <div className="grid md:grid-cols-3 gap-8">
-                    {items.map((item, index) => (
+        <section className="py-24 md:py-32 bg-[#050505] border-y border-white/5 relative overflow-hidden">
+            {/* Subtle background element */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-primary/2 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-24">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">A Elevação da sua Marca</h2>
+                    <p className="text-white/40 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                        Transformamos marcas estagnadas em identidades visuais de alto valor e desejo.
+                    </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-12">
+                    {pillars.map((pillar, index) => (
                         <motion.div
                             key={index}
-                            whileHover={{ y: -10 }}
-                            className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all group"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="group p-8 rounded-[2.5rem] bg-[#0A0A0A] border border-white/5 hover:border-primary/20 transition-all duration-500"
                         >
-                            <div className={`${item.color} w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-6 transition-transform`}>
-                                {item.icon}
+                            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                                {pillar.icon}
                             </div>
-                            <p className="text-xs md:text-sm font-bold text-red-300 uppercase tracking-wider mb-2">O Problema</p>
-                            <h3 className="text-lg md:text-xl font-bold mb-4 line-through text-white/40">{item.problem}</h3>
-                            <div className="h-px w-full bg-white/10 my-4" />
-                            <p className="text-xs md:text-sm font-bold text-green-300 uppercase tracking-wider mb-2">A Solução</p>
-                            <h3 className="text-xl md:text-2xl font-bold text-sky-400">{item.solution}</h3>
+
+                            <p className="text-xs font-bold text-white/20 uppercase tracking-[0.2em] mb-4">De</p>
+                            <h3 className="text-xl font-bold mb-4 line-through text-white/30 decoration-primary/30">{pillar.title}</h3>
+
+                            <div className="h-px w-12 bg-primary/20 my-6 group-hover:w-full transition-all duration-700" />
+
+                            <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4">Para</p>
+                            <h3 className="text-2xl font-bold text-white mb-4">{pillar.elevation}</h3>
+                            <p className="text-white/40 font-light leading-relaxed">
+                                {pillar.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>
@@ -51,3 +69,4 @@ const ProblemSolution = () => {
 };
 
 export default ProblemSolution;
+

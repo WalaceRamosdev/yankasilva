@@ -1,67 +1,74 @@
-import { Instagram, Linkedin, Twitter, MessageSquare } from "lucide-react";
+import { Instagram, Linkedin, Send } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="bg-neutral-dark/50 border-t border-white/5 pt-20 pb-10">
+        <footer className="bg-[#050505] border-t border-white/5 pt-24 pb-12">
             <div className="container mx-auto px-6">
-                <div className="grid md:grid-cols-4 gap-12 mb-16 text-center md:text-left">
-                    <div className="md:col-span-2">
-                        <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-                            <img src="/logo.jpeg" alt="Yanka Silva" className="h-10 md:h-12 w-auto object-contain mix-blend-screen" />
-                        </div>
-                        <p className="text-white/60 max-w-sm mb-6 mx-auto md:mx-0">
-                            Transformando marcas através de estratégias digitais autênticas e focadas em resultados reais.
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
+                    <div className="md:col-span-5">
+                        <a href="#inicio" className="inline-block mb-8">
+                            <span className="text-3xl font-bold text-white tracking-tighter">
+                                Yanka<span className="text-primary">Silva</span>
+                            </span>
+                        </a>
+                        <p className="text-white/40 text-lg font-light leading-relaxed max-w-sm mb-10">
+                            Estrategista em Identidade Visual. Elevando marcas através de design com propósito e posicionamento de mercado.
                         </p>
-                        <div className="flex justify-center md:justify-start gap-4">
-                            {[
-                                { icon: <Instagram className="w-5 h-5" />, link: "#", label: "Instagram" },
-                                { icon: <Linkedin className="w-5 h-5" />, link: "#", label: "Linkedin" },
-                                { icon: <Twitter className="w-5 h-5" />, link: "#", label: "Twitter" }
-                            ].map((social, i) => (
-                                <a key={i} href={social.link} aria-label={social.label} className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                                    {social.icon}
-                                </a>
-                            ))}
+                        <div className="flex gap-6">
+                            <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/40 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500">
+                                <Instagram size={20} />
+                            </a>
+                            <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/40 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500">
+                                <Linkedin size={20} />
+                            </a>
                         </div>
                     </div>
 
-                    <div>
-                        <h4 className="font-bold mb-6">Links Rápidos</h4>
-                        <ul className="space-y-3 text-white/60">
-                            <li><a href="#inicio" className="hover:text-primary transition-colors">Início</a></li>
-                            <li><a href="#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
-                            <li><a href="#sobre" className="hover:text-primary transition-colors">Sobre</a></li>
-                            <li><a href="#portfolio" className="hover:text-primary transition-colors">Portfólio</a></li>
+                    <div className="md:col-span-3">
+                        <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-10">Explorar</h4>
+                        <ul className="space-y-4">
+                            <li><a href="#inicio" className="text-white/40 hover:text-white transition-colors">Início</a></li>
+                            <li><a href="#sobre" className="text-white/40 hover:text-white transition-colors">Sobre</a></li>
+                            <li><a href="#servicos" className="text-white/40 hover:text-white transition-colors">Serviços</a></li>
+                            <li><a href="#portfolio" className="text-white/40 hover:text-white transition-colors">Portfólio</a></li>
+                            <li><a href="#processo" className="text-white/40 hover:text-white transition-colors">Método</a></li>
                         </ul>
                     </div>
 
-                    <div>
-                        <h4 className="font-bold text-lg mb-6 text-white text-center md:text-left">Contato</h4>
-                        <ul className="space-y-3 text-white/60">
-                            <li>contato@yankasilva.com</li>
-                            <li>+55 (11) 99999-9999</li>
-                            <li>São Paulo, Brasil</li>
+                    <div className="md:col-span-4">
+                        <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-10">Contato</h4>
+                        <ul className="space-y-6">
+                            <li>
+                                <p className="text-xs text-white/20 uppercase tracking-widest mb-1">E-mail</p>
+                                <a href="mailto:contato@yankasilva.com" className="text-xl text-white hover:text-primary transition-colors">contato@yankasilva.com</a>
+                            </li>
+                            <li>
+                                <p className="text-xs text-white/20 uppercase tracking-widest mb-1">Localização</p>
+                                <p className="text-xl text-white">São Paulo, Brasil — Global</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
-                    <p>© 2026 Yanka Silva. Todos os direitos reservados.</p>
-                    <div className="flex gap-6">
-                        <a href="#" className="hover:text-primary transition-colors">Privacidade</a>
-                        <a href="#" className="hover:text-primary transition-colors">Termos</a>
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-sm text-white/20 font-light">
+                        © {new Date().getFullYear()} Yanka Silva. Desenvolvido com foco em estratégia.
+                    </p>
+                    <div className="flex gap-10">
+                        <a href="#" className="text-xs text-white/20 uppercase tracking-widest hover:text-white transition-colors">Privacidade</a>
+                        <a href="#" className="text-xs text-white/20 uppercase tracking-widest hover:text-white transition-colors">Termos</a>
                     </div>
                 </div>
             </div>
 
-            {/* Floating WhatsApp Button */}
+            {/* WhatsApp Floating Button - More subtle and professional */}
             <a
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-14 h-14 md:w-16 md:h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 animate-bounce"
+                className="fixed bottom-8 right-8 w-16 h-16 bg-white text-black rounded-full flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(255,255,255,0.5)] hover:bg-primary hover:text-white hover:scale-110 active:scale-95 transition-all duration-500 z-50 group"
             >
-                <MessageSquare className="w-7 h-7 md:w-8 md:h-8" />
+                <Send className="w-6 h-6 group-hover:rotate-12 transition-transform" />
             </a>
         </footer>
     );

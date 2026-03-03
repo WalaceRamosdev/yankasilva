@@ -1,119 +1,75 @@
 ---
-import { 
-  Palette, 
-  Layers, 
-  Contact, 
-  Image as ImageIcon, 
-  UserCircle, 
-  LayoutGrid, 
-  Grid3X3, 
-  Calendar, 
-  FileText, 
-  BookOpen, 
-  Utensils, 
-  Award, 
-  UserRound, 
-  Megaphone 
-} from 'lucide-react';
+import { Palette, Layers, Sparkles, Share2, FileBox } from "lucide-react";
 
-const serviceCategories = [
+const services = [
+  {
+    title: "Logotipo",
+    desc: "Criação de símbolos memoráveis que resumem o DNA da sua marca em segundos.",
+    icon: Palette,
+  },
   {
     title: "Identidade Visual",
-    services: [
-      { title: "Logotipo", desc: "Desenvolvimento de símbolo memorável que representa a essência do seu negócio.", icon: Palette },
-      { title: "Identidade Visual", desc: "Guia completo com tipografia, paleta de cores e elementos visuais consistentes.", icon: Layers },
-      { title: "Cartão de Visita", desc: "Design profissional para causar uma excelente primeira impressão em seus contatos.", icon: Contact },
-    ]
+    desc: "Sistemas visuais completos que garantem consistência e profissionalismo em todos os pontos.",
+    icon: Layers,
   },
   {
-    title: "Redes Sociais",
-    services: [
-      { title: "Capa para redes sociais", desc: "Arte otimizada para banners de LinkedIn, Facebook, YouTube e Twitter.", icon: ImageIcon },
-      { title: "Perfil para redes sociais", desc: "Padronização visual de fotos de perfil para transmitir profissionalismo.", icon: UserCircle },
-      { title: "Posts para redes sociais", desc: "Design focado em engajamento e clareza na comunicação da sua marca.", icon: LayoutGrid },
-      { title: "Organização de perfil", desc: "Curadoria estratégica do grid e organização de destaques no Instagram.", icon: Grid3X3 },
-      { title: "Gerenciamento", desc: "Planejamento mensal e postagens estratégicas para manter sua marca ativa.", icon: Calendar },
-    ]
+    title: "Branding",
+    desc: "Construção de percepção de valor e autoridade através de design estratégico.",
+    icon: Sparkles,
   },
   {
-    title: "Materiais Impressos e Digitais",
-    services: [
-      { title: "Panfleto", desc: "Peças publicitárias claras e atrativas para distribuição física ou digital.", icon: FileText },
-      { title: "Catálogo", desc: "Estruturação elegante da sua linha de produtos ou portfólio de serviços.", icon: BookOpen },
-      { title: "Cardápio", desc: "Design funcional e atraente que facilita a escolha do cliente e valoriza pratos.", icon: Utensils },
-      { title: "Certificado", desc: "Layout oficial e sofisticado para conclusões de cursos e premiações.", icon: Award },
-      { title: "Currículo", desc: "Apresentação de carreira moderna que destaca suas melhores competências.", icon: UserRound },
-      { title: "Publicidade", desc: "Artes destinadas a anúncios em diversos formatos, focadas em conversão visual.", icon: Megaphone },
-    ]
-  }
+    title: "Social Media",
+    desc: "Design focado em converter seguidores em clientes através de conteúdo visual de alto nível.",
+    icon: Share2,
+  },
+  {
+    title: "Materiais Gráficos",
+    desc: "Papelaria e itens digitais que elevam a experiência do seu cliente com a marca.",
+    icon: FileBox,
+  },
 ];
 ---
 
-<section id="servicos" class="bg-[#0A0A0A] py-24 px-6 sm:px-10 lg:px-20 overflow-hidden">
+<section id="servicos" class="bg-[#050505] py-24 px-6 overflow-hidden">
   <div class="max-w-7xl mx-auto">
-    <!-- Header da Seção -->
-    <div class="text-center mb-24 reveal">
-      <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Nossos Serviços</h2>
-      <p class="text-white/60 text-lg md:text-xl max-w-3xl mx-auto font-subtitle font-light leading-relaxed">
-        Soluções criativas focadas em design e identidade visual para fortalecer sua marca e elevar sua presença digital.
-      </p>
-    </div>
-
-    <!-- Categorias -->
-    <div class="space-y-32">
-      {serviceCategories.map((category) => (
-        <div class="reveal">
-          <div class="flex items-center gap-6 mb-12">
-            <h3 class="text-xl md:text-3xl font-bold text-secondary uppercase tracking-[0.2em] whitespace-nowrap">{category.title}</h3>
-            <div class="h-[1px] w-full bg-gradient-to-r from-secondary/50 to-transparent"></div>
-          </div>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {category.services.map((service) => {
-              const ServiceIcon = service.icon;
-              return (
-                <div class="service-card group relative bg-[#121212] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-[#151515] hover:border-secondary/20 hover:shadow-[0_20px_50px_-15px_rgba(124,58,237,0.1)] overflow-hidden cursor-default">
-                  <!-- Efeito sutil de brilho no hover -->
-                  <div class="absolute -inset-x-20 -inset-y-20 bg-secondary/5 opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-700 pointer-events-none"></div>
-                  
-                  <div class="relative z-10">
-                    <div class="icon-container mb-8 inline-flex p-4 rounded-3xl bg-secondary/[0.08] text-secondary transition-all duration-700 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:shadow-secondary/20">
-                      <ServiceIcon size={32} strokeWidth={1.2} />
-                    </div>
-                    
-                    <h4 class="text-2xl font-bold text-white mb-4 transition-colors duration-500 group-hover:text-secondary group-hover:translate-x-1 inline-block">
-                      {service.title}
-                    </h4>
-                    
-                    <p class="text-white/40 text-base leading-relaxed font-light group-hover:text-white/60 transition-colors duration-500">
-                      {service.desc}
-                    </p>
-                  </div>
-
-                  <!-- Detalhe minimalista na borda -->
-                  <div class="absolute bottom-0 left-0 h-[3px] w-0 bg-secondary group-hover:w-1/3 transition-all duration-700 ease-out"></div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Rodapé da Seção/CTA -->
-    <div class="mt-32 text-center reveal">
-      <a 
-        href="#contato" 
-        aria-label="Solicitar Orçamento"
-        class="group relative inline-flex items-center justify-center px-14 py-6 bg-secondary text-white font-bold rounded-full transition-all duration-500 overflow-hidden hover:scale-105 active:scale-95 shadow-xl shadow-secondary/10"
+    <div class="text-center mb-20 reveal">
+      <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+        Soluções Estratégicas
+      </h2>
+      <p
+        class="text-white/40 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed"
       >
-        <span class="relative z-10 text-lg">Solicitar Orçamento</span>
-        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-        <div class="absolute inset-x-0 bottom-0 h-1 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
-      </a>
-      <p class="mt-8 text-white/30 text-sm font-light">
-        Resposta rápida em até 24 horas úteis.
+        Elevamos sua marca através de design focado em resultados e
+        posicionamento de mercado.
       </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        services.map((service) => {
+          const ServiceIcon = service.icon;
+          return (
+            <div class="reveal group relative bg-[#0A0A0A] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-[#0D0D0D] hover:border-primary/20 cursor-default">
+              <div class="mb-8 inline-flex p-4 rounded-2xl bg-primary/10 text-primary transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
+                <ServiceIcon size={28} strokeWidth={1.5} />
+              </div>
+
+              <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+
+              <p class="text-white/40 text-base leading-relaxed font-light group-hover:text-white/60 transition-colors">
+                {service.desc}
+              </p>
+
+              {/* Detalhe sutil */}
+              <div class="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity">
+                <ServiceIcon size={80} strokeWidth={0.5} />
+              </div>
+            </div>
+          );
+        })
+      }
     </div>
   </div>
 </section>
@@ -121,39 +77,28 @@ const serviceCategories = [
 <style>
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .reveal.active {
     opacity: 1;
     transform: translateY(0);
   }
-
-  .service-card {
-    will-change: transform, opacity, background-color;
-  }
 </style>
 
 <script>
   function reveal() {
     const reveals = document.querySelectorAll(".reveal");
-    
     reveals.forEach((reveal) => {
       const windowHeight = window.innerHeight;
       const elementTop = reveal.getBoundingClientRect().top;
       const elementVisible = 100;
-      
       if (elementTop < windowHeight - elementVisible) {
         reveal.classList.add("active");
       }
     });
   }
-
-  // Chamar ao carregar e ao scroll
   window.addEventListener("scroll", reveal);
-  // Usar uma pequena demora para garantir o trigger inicial suave
-  window.addEventListener("DOMContentLoaded", () => {
-    setTimeout(reveal, 100);
-  });
+  window.addEventListener("DOMContentLoaded", reveal);
 </script>
